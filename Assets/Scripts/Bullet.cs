@@ -1,0 +1,52 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Bullet : MonoBehaviour
+{
+
+    float thrust = 5f;
+    private float bulletTime;
+    public string BulletName;
+
+
+    // Use this for initialization
+    void Start()
+    {
+        if (BulletName == null || BulletName.Length == 0)
+        {
+            Debug.LogError("Empty BulletName" + gameObject.name);
+        }
+        bulletTime = 0;
+
+        // Play shoot SFX when the bullet is spawned (if SFXManager is available)
+        if (SFXManager.Instance != null)
+        {
+            SFXManager.Instance.PlayShoot();
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        /* Bullet Movement */
+        transform.Translate(Vector2.right * thrust * Time.deltaTime);
+        bulletTime++;
+
+        if (bulletTime >= 200)
+            Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == BulletName)
+        {
+            col.gameObject.GetComponent<Zombie>().death = true;
+            Debug.Log(col.gameObject.name);
+            FindObjectOfType<ZombieSpawner>().IncreaseDeath();
+        }
+
+        Destroy(gameObject);
+
+    }
+}
