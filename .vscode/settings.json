@@ -52,5 +52,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Unity-2D-Zombie-Hunter-master.slnx"
+    "dotnet.defaultSolution": "Zombie-Hunter-master.slnx"
 }
