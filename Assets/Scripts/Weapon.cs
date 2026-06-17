@@ -10,16 +10,16 @@ public enum WeaponType
 
 public class Weapon : MonoBehaviour
 {
-    [Header("🔫 Основні налаштування")]
+    [Header(" Основні налаштування")]
     public WeaponType currentWeapon; // Обирай тип зброї прямо в Unity
     public Transform firePoint;      // Точка на дулі, звідки вилітає куля
     public GameObject bulletPrefab;  // Твій префаб кулі
 
-    [Header("⚡ Характеристики стрільби")]
+    [Header(" Характеристики стрільби")]
     public float fireRate = 0.5f;    // Час між пострілами (чим менше — тим швидше стріляє)
     private float nextFireTime = 0f; // Внутрішній таймер
 
-    [Header("💥 Налаштування Дрібовика")]
+    [Header(" Налаштування Дрібовика")]
     public int pelletsCount = 5;     // Кількість кульок за один постріл
     public float spreadAngle = 15f;  // Кут розкиду (наскільки широко летять кулі)
 
